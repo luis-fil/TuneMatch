@@ -1,10 +1,10 @@
 package com.aed2.tunematch.negocio.basica;
 
-import org.springframework.data.annotation.Id;
-import jakarta.persistence.Entity;
+import org.springframework.data.neo4j.core.schema.Id;
+import org.springframework.data.neo4j.core.schema.Node;
 import java.util.List;
 
-@Entity
+@Node("Musica")
 public class Musica {
     @Id
     private String id;
@@ -45,5 +45,10 @@ public class Musica {
     }
     public float getEnergy(){
         return energy;
+    }
+
+    @Override
+    public String toString(){
+        return titulo + " - " + artistas;
     }
 }
