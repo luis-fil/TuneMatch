@@ -2,6 +2,7 @@ package com.aed2.tunematch.negocio.basica;
 
 import org.springframework.data.annotation.Id;
 import jakarta.persistence.Entity;
+import java.util.List;
 
 @Entity
 public class Musica {
@@ -9,41 +10,40 @@ public class Musica {
     private String id;
     private String titulo;
     private String genero;
+    private int popularidade;
     private float dancebility;
     private float energy;
-    private boolean explicit;
-    @Relationship(type = "INTERPRETADA_POR", direction = Relationship.Direction.OUTGOING)
-    private List<Artista> artistas;
+    private List<String> artistas;
 
-    public Musica(String id, String titulo, List<Artista> artista, String genero, float dancebility, float energy, boolean explicit){
+    public Musica(String id, String titulo, List<String> artistas, String genero, int popularidade, float dancebility, float energy, boolean explicit){
         this.id = id;
         this.titulo = titulo;
-        this.artista = artista;
+        this.artistas = artistas;
         this.genero = genero;
+        this.popularidade = popularidade;
         this.dancebility = dancebility;
         this.energy = energy;
-        this.explicit = explicit;
     }
 
-    public getId(){
+    public String getId(){
         return id;
     }
-    public getTitulo(){
+    public String getTitulo(){
         return titulo;
     }
-    public getArtista(){
-        return artista;
+    public List<String>getArtista(){
+        return artistas;
     }
-    public getGenero(){
+    public String getGenero(){
         return genero;
     }
-    public getExplicit(){
-        return explicit;
+    public int getPopularidade(){
+        return popularidade;
     }
-    public getDancebility(){
+    public float getDancebility(){
         return dancebility;
     }
-    public getEnergy(){
+    public float getEnergy(){
         return energy;
     }
 }
