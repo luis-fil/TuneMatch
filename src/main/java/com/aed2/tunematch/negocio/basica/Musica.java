@@ -1,12 +1,12 @@
 package com.aed2.tunematch.negocio.basica;
 
 import org.springframework.data.neo4j.core.schema.Id;
-import org.springframework.data.neo4j.core.schema.Node;
 import java.util.List;
 
-@Node("Musica")
 public class Musica {
     @Id
+    private static final long serialVersionUID = 1L; // Garante compatibilidade na serialização
+
     private String id;
     private String titulo;
     private String genero;
@@ -15,7 +15,7 @@ public class Musica {
     private float energy;
     private List<String> artistas;
 
-    public Musica(String id, String titulo, List<String> artistas, String genero, int popularidade, float dancebility, float energy, boolean explicit){
+    public Musica(String id, String titulo, List<String> artistas, String genero, int popularidade, float dancebility, float energy){
         this.id = id;
         this.titulo = titulo;
         this.artistas = artistas;
@@ -31,7 +31,7 @@ public class Musica {
     public String getTitulo(){
         return titulo;
     }
-    public List<String>getArtista(){
+    public List<String>getArtistas(){
         return artistas;
     }
     public String getGenero(){

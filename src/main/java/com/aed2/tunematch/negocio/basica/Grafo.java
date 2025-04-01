@@ -4,10 +4,18 @@ import java.util.*;
 
 public class Grafo {
     //Lista de Vertices
-    private Map<String, Musica> musicas = new HashMap<>();
+    private Map<String, Musica> musicas;
     //Lista de adjacencias (arestas nao direcionadas)
     private Map<String, Map<Musica, Double>> adjacentes = new HashMap<>();
 
+    public Grafo(){
+        musicas = new HashMap<>();
+    }
+
+    public Grafo(List<Musica> musicas){
+
+    }
+    
     public void inserirMusica(Musica musica){
         //Inserir cria um vértice e cria um array de vértices, como se fosse uma lista de adjacencia
         musicas.putIfAbsent(musica.getId(), musica);
@@ -27,7 +35,7 @@ public class Grafo {
     public List<Musica> recomendarMusicas(Musica musica){
         if(!adjacentes.containsKey(musica.getId())) return Collections.emptyList();
         PriorityQueue<Map.Entry<Musica, Double>> fila_de_prioridade = new PriorityQueue<>(
-            (a,b) -> Double.compare(a.getValue(), b.getValue())
+            (a,b) -> Double.compare(b.getValue(), a.getValue())
         );
 
         Set<Musica> visitados = new HashSet<>();
