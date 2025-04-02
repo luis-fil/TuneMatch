@@ -11,39 +11,42 @@ public class Musica {
     private String titulo;
     private String genero;
     private int popularidade;
-    private float dancebility;
-    private float energy;
+    private double danceability;
+    private double energy;
+    private double valence;
     private List<String> artistas;
 
-    public Musica(String id, String titulo, List<String> artistas, String genero, int popularidade, float dancebility, float energy, boolean explicit){
+    public Musica(String id, String titulo, List<String> artistas, String genero, int popularidade, double danceability, double energy, double valence) {
         this.id = id;
         this.titulo = titulo;
         this.artistas = artistas;
         this.genero = genero;
         this.popularidade = popularidade;
-        this.dancebility = dancebility;
+        this.danceability = danceability;
         this.energy = energy;
+        this.valence = valence;
     }
 
-    public String getId(){
-        return id;
-    }
-    public String getTitulo(){
-        return titulo;
-    }
-    public List<String>getArtista(){
-        return artistas;
-    }
-    public String getGenero(){
-        return genero;
-    }
-    public int getPopularidade(){
-        return popularidade;
-    }
-    public float getDancebility(){
-        return dancebility;
-    }
-    public float getEnergy(){
-        return energy;
+    public String getId() { return id; }
+    public String getTitulo() { return titulo; }
+    public List<String> getArtistas() { return artistas; }
+    public String getGenero() { return genero; }
+    public int getPopularidade() { return popularidade; }
+    public double getDanceability() { return danceability; }
+    public double getEnergy() { return energy; }
+    public double getValence() { return valence; }
+
+    @Override
+    public String toString() {
+        return "Musica{" +
+                "id='" + id + '\'' +
+                ", titulo='" + titulo + '\'' +
+                ", artistas=" + artistas +
+                ", genero='" + genero + '\'' +
+                ", popularidade=" + popularidade +
+                ", danceability=" + danceability +
+                ", energy=" + energy +
+                ", valence=" + valence +
+                '}';
     }
 }
