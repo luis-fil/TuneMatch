@@ -73,21 +73,22 @@ public class PreProcessadorGrafo {
             // Escrevendo a quantidade de músicas e arestas na primeira linha
             writer.write(musicas.size() + "," + arestas.size());
             writer.newLine();
-            
+
+            CSVPrinter csvPrinter = new CSVPrinter(writer, CSVFormat.DEFAULT);
             // Escrevendo os dados das músicas, formatando corretamente
             for (Musica musica : musicas) {
-                writer.write(String.format("\"%s\",\"%s\",\"%s\",%s,%d,%.2f,%.2f,%.2f",
-                        musica.getId(),
-                        musica.getTitulo().replace("\"", "\"\""), // Escapando aspas
-                        String.join(";", musica.getArtistas()).replace("\"", "\"\""), // Escapando aspas
-                        musica.getGenero(),
-                        musica.getPopularidade(),
-                        musica.getDanceability(),
-                        musica.getEnergy(),
-                        musica.getValence()));
-                writer.newLine();
+                csvPrinter.printRecord(
+                    musica.getId(),
+                    musica.getTitulo(),
+                    String.join(";", musica.getArtistas()),
+                    musica.getGenero(),
+                    musica.getPopularidade(),
+                    musica.getDanceability(),
+                    musica.getEnergy(),
+                    musica.getValence()
+                );
             }
-            
+            csvPrinter.close();
             // Escrevendo as arestas
             for (String aresta : arestas) {
                 writer.write(aresta);

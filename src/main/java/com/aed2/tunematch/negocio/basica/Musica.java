@@ -27,6 +27,8 @@ public class Musica {
         this.valence = valence;
     }
 
+    public Musica() {}
+
     public String getId() { return id; }
     public String getTitulo() { return titulo; }
     public List<String> getArtistas() { return artistas; }
