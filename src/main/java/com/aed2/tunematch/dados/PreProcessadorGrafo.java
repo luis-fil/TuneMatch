@@ -3,7 +3,8 @@ package com.aed2.tunematch.dados;
 import java.io.*;
 import java.util.*;
 import org.apache.commons.csv.*;
-import com.aed2.tunematch.negocio.basica.Musica;
+
+import com.aed2.tunematch.negocio.Musica;
 
 public class PreProcessadorGrafo {
     private static final double LIMIAR = 0.685;

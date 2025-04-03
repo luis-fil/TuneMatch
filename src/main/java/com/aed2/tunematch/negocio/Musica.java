@@ -1,4 +1,4 @@
-package com.aed2.tunematch.negocio.basica;
+package com.aed2.tunematch.negocio;
 
 import org.springframework.data.annotation.Id;
 import jakarta.persistence.Entity;

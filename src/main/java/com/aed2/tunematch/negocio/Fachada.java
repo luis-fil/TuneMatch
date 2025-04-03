@@ -1,8 +1,4 @@
-package com.aed2.tunematch.negocio.fachada;
-
-import com.aed2.tunematch.negocio.basica.Grafo;
-import com.aed2.tunematch.negocio.basica.Musica;
-import com.aed2.tunematch.negocio.cadastro.MusicaCadastro;
+package com.aed2.tunematch.negocio;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -45,7 +41,13 @@ public class Fachada {
         return musicaCadastro.buscarPorId(idMusica);
     }
 
+    public List<Musica> buscarMusicasPorTitulo(String termo){
+            return musicaCadastro.buscarSugestoes(termo);
+    }
+
     public List<Musica> buscarMusicasPorGenero(String genero) {
         return grafo.buscarPorGenero(genero);
     }
+
+    
 }
