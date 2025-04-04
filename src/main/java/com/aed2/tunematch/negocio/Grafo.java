@@ -89,12 +89,17 @@ public class Grafo {
     
         // Coletar todas as conexões diretas das músicas base
         for (Musica musica : musicasBase) {
+            // Verifica se está inserida no grafo
             if (!listaAdjacencia.containsKey(musica.getId())) continue;
             
             for (Map.Entry<Musica, Double> entrada : listaAdjacencia.get(musica.getId()).entrySet()) {
                 Musica vizinho = this.musicas.get(entrada.getKey().getId());
-                if (vizinho != null && !visitados.contains(vizinho)) {
-                    fila_de_prioridade.offer(Map.entry(vizinho, entrada.getValue()));
+                if (vizinho != null){
+                    if(visitados.contains(vizinho)) {
+                        entrada.setValue(entrada.getValue() * 1.5);
+                    } else {
+                        fila_de_prioridade.offer(Map.entry(vizinho, entrada.getValue()));
+                    }
                 }
             }
         }
@@ -108,8 +113,12 @@ public class Grafo {
             // Explorar os vizinhos das músicas recomendadas
             for (Map.Entry<Musica, Double> entrada : listaAdjacencia.get(maisRelacionado.getKey().getId()).entrySet()) {
                 Musica vizinho = this.musicas.get(entrada.getKey().getId());
-                if (vizinho != null && !visitados.contains(vizinho)) {
-                    fila_de_prioridade.offer(Map.entry(vizinho, entrada.getValue()));
+                if (vizinho != null){
+                    if(visitados.contains(vizinho)) {
+                        entrada.setValue(entrada.getValue() * 1.5);
+                    } else {
+                        fila_de_prioridade.offer(Map.entry(vizinho, entrada.getValue()));
+                    }
                 }
             }
         }
