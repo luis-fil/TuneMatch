@@ -19,7 +19,7 @@ public class Controller {
     private final Fachada fachada;
 
     public Controller() {
-        this.fachada = Fachada.getInstancia("dados/grafo.csv");
+        this.fachada = Fachada.getInstancia("src\\main\\java\\com\\aed2\\tunematch\\dados\\grafo.csv");
     }
 
     @GetMapping

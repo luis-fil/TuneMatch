@@ -89,13 +89,15 @@ public class PreProcessadorGrafo {
                     musica.getValence()
                 );
             }
-            csvPrinter.close();
+
             // Escrevendo as arestas
             for (String aresta : arestas) {
                 writer.write(aresta);
                 writer.newLine();
             }
-
+            
+            csvPrinter.close();
+            
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -114,5 +116,22 @@ public class PreProcessadorGrafo {
         peso += (1.0 - Math.abs(m1.getPopularidade() - m2.getPopularidade()) / 100.0) * 0.1;
 
         return Math.max(0.0, peso);
+    }
+
+    public static void main(String[] args) {
+        // Caminho do arquivo CSV de entrada
+        String caminhoCSV = "src\\main\\java\\com\\aed2\\tunematch\\dados\\dataset.csv";  
+        
+        // Nome do arquivo de saída com o grafo
+        String caminhoSaida = "src\\main\\java\\com\\aed2\\tunematch\\dados\\grafo.csv";
+
+        // Definir parâmetros para o número de gêneros e músicas por gênero
+        int maxGeneros = 50;  
+        int maxMusicasPorGenero = 10;  
+
+        // Executar o pré-processador corretamente
+        PreProcessadorGrafo.processarMusicas(caminhoCSV, caminhoSaida, maxGeneros, maxMusicasPorGenero);
+
+        System.out.println("Processamento concluído! O grafo foi salvo em " + caminhoSaida);
     }
 }

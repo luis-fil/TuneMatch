@@ -1,12 +1,8 @@
 package com.aed2.tunematch.negocio;
 
-import org.springframework.data.annotation.Id;
-import jakarta.persistence.Entity;
 import java.util.List;
 
-@Entity
 public class Musica {
-    @Id
     private String id;
     private String titulo;
     private String genero;
