@@ -127,7 +127,7 @@ public class PreProcessadorGrafo {
 
         // Definir parâmetros para o número de gêneros e músicas por gênero
         int maxGeneros = 114;  
-        int maxMusicasPorGenero = 20;  
+        int maxMusicasPorGenero = 50;  
 
         // Executar o pré-processador corretamente
         PreProcessadorGrafo.processarMusicas(caminhoCSV, caminhoSaida, maxGeneros, maxMusicasPorGenero);
