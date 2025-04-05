@@ -107,9 +107,12 @@ public class Grafo {
         List<Musica> recomendacoes = new ArrayList<>();
         while (!fila_de_prioridade.isEmpty() && recomendacoes.size() < 30) {
             Map.Entry<Musica, Double> maisRelacionado = fila_de_prioridade.poll();
-            recomendacoes.add(maisRelacionado.getKey());
-            visitados.add(maisRelacionado.getKey());
-    
+
+            if(!recomendacoes.contains(maisRelacionado.getKey())){
+                recomendacoes.add(maisRelacionado.getKey());
+                visitados.add(maisRelacionado.getKey());
+            }
+
             // Explorar os vizinhos das músicas recomendadas
             for (Map.Entry<Musica, Double> entrada : listaAdjacencia.get(maisRelacionado.getKey().getId()).entrySet()) {
                 Musica vizinho = this.musicas.get(entrada.getKey().getId());
